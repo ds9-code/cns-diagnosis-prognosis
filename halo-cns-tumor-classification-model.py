@@ -3,14 +3,9 @@ from google.colab import drive
 drive.mount('/content/drive')
 
 # Install required python packages
-
 !pip install SimpleITK
 !pip install torchmetrics
 !pip install monai
-
-# Commented out IPython magic to ensure Python compatibility.
-# Import required python libraries
-# These are available libraries and were not coded by the author
 
 # %config InlineBackend.figure_format = 'retina'
 # %matplotlib inline
