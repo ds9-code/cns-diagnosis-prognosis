@@ -34,62 +34,33 @@ The classification pipeline predicts tumor diagnosis or grade using supervised l
 
 **Logistic Regression**
 
-A linear probabilistic classifier:
+Logistic regression models the probability of class membership using:
 
-\[
-P(Y=1 \mid X) = \sigma(\beta^T X)
-\]
+P(Y = 1 | X) = sigmoid(beta^T X)
 
 Where:
-- \( \sigma \) is the logistic (sigmoid) function  
-- \( \beta \) represents learned feature coefficients  
+- beta represents learned feature weights  
+- sigmoid(z) = 1 / (1 + e^(−z))
 
-Logistic regression provides:
+This provides:
 - Interpretable coefficients
 - Directionality of feature effects
 - A strong linear baseline
 
----
-
 **Random Forest Classifier**
 
-An ensemble of decision trees:
+Random forest is an ensemble of decision trees:
 
-\[
-\hat{y} = \frac{1}{B} \sum_{b=1}^{B} T_b(X)
-\]
+Prediction = (1 / B) * sum of tree_b(X) over B trees
 
 Where:
-- \(T_b\) is an individual decision tree  
-- \(B\) is the number of trees  
+- B = number of trees  
+- Each tree is trained on bootstrapped samples  
 
 Random forests:
 - Capture nonlinear relationships  
-- Model complex feature interactions  
-- Reduce variance via ensembling  
-
----
-
-#### Preprocessing Techniques
-
-- Standardization of continuous features  
-- Handling of missing values  
-- Train/test split for validation  
-
----
-
-#### Classification Evaluation Metrics
-
-- **Accuracy**
-- **Precision**
-- **Recall**
-- **F1 Score**
-- **ROC–AUC**
-- **Confusion Matrix**
-
-These metrics evaluate overall performance and class-specific behavior.
-
----
+- Model feature interactions  
+- Reduce overfitting via ensembling  
 
 ### 2. Survival Prognosis Modeling
 
@@ -97,49 +68,26 @@ The prognosis pipeline predicts time-to-event outcomes such as overall survival.
 
 #### Cox Proportional Hazards Model
 
-A semi-parametric survival model:
+The Cox model estimates the hazard function:
 
-\[
-h(t \mid X) = h_0(t)\exp(\beta^T X)
-\]
+h(t | X) = h0(t) * exp(beta^T X)
 
 Where:
-- \(h(t \mid X)\) = hazard function  
-- \(h_0(t)\) = baseline hazard  
-- \(\beta\) = covariate coefficients  
+- h(t | X) is the hazard at time t  
+- h0(t) is the baseline hazard  
+- exp(beta^T X) represents relative risk  
 
-The model estimates:
-- Hazard ratios  
-- Relative risk scores  
+Outputs include:
+- Hazard ratios (exp(beta))  
+- Risk scores  
 - Survival probability estimates  
-
----
 
 #### Survival Evaluation Metric
 
 **Concordance Index (C-index)**
 
-\[
-C = P(\hat{T}_i < \hat{T}_j \mid T_i < T_j)
-\]
+Concordance Index (C-index):
 
-The C-index measures how well predicted risk ordering matches actual survival ordering.
+C = Probability(predicted risk ordering matches true survival ordering)
 
----
-
-### 📊 Model Validation Strategy
-
-- Train/test split  
-- Cross-validation (where applicable)  
-- Out-of-sample evaluation  
-- Comparison of linear vs ensemble methods  
-
----
-
-### 🔍 Interpretability
-
-- Logistic regression coefficients  
-- Random forest feature importance  
-- Hazard ratios from Cox models  
-
-These outputs support clinically interpretable conclusions about which features influence diagnosis and survival risk.
+The C-index measures how well predicted risk rankings align with observed survival times.
