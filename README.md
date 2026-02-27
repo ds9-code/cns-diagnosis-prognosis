@@ -20,7 +20,7 @@ The goal of this project is to build robust, interpretable models that support c
 | `cns-tumor-classification-diagnosis.py/` | End-to-end pipeline for CNS tumor diagnosis classification. Includes data preprocessing, model training, evaluation (accuracy, ROC-AUC, etc.), and performance reporting. |
 | `cns-tumor-survival-prognosis.py/` | Survival modeling pipeline for prognosis prediction. Implements survival analysis methods (e.g., Cox proportional hazards), computes concordance index (C-index), and generates survival risk outputs. |
 
-## 🔬 Techniques Used
+## Techniques Used
 
 This repository implements both **supervised classification** and **survival analysis** methods for CNS tumor diagnosis and prognosis using structured clinical and imaging-derived features.
 
